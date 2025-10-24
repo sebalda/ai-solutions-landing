@@ -73,12 +73,14 @@ const testimonials = [
   {
     quote:
       "Reducimos 90% el tiempo en reportes. Ahora se generan automáticamente y llegan listos para presentar.",
-    name: "Kobai — Equipo de Insights",
+    name: "TechFlow — Equipo de Insights",
+    rating: 5,
   },
   {
     quote:
       "Nuestro proceso de cotización pasó de días a minutos. Los clientes reciben respuestas instantáneas.",
     name: "Pozinox — E‑commerce industrial",
+    rating: 5,
   },
 ];
 
@@ -380,7 +382,7 @@ export default function AISolutionsLanding() {
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">KOBAI — INSIGHTS AUTOMATIZADOS</CardTitle>
+                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">TECHFLOW — INSIGHTS AUTOMATIZADOS</CardTitle>
               </CardHeader>
               <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
                 <p>PROCESAMOS ENCUESTAS AUTOMÁTICAMENTE, GENERAMOS INSIGHTS CON IA Y CREAMOS PRESENTACIONES LISTAS PARA PRESENTAR.</p>
@@ -508,7 +510,12 @@ export default function AISolutionsLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardContent className="p-8 relative z-10">
                   <p className="text-red-100 text-lg leading-relaxed font-mono italic">"{t.quote.toUpperCase()}"</p>
-                  <p className="mt-6 text-sm text-red-400 font-mono font-bold tracking-wider">{t.name.toUpperCase()}</p>
+                  <div className="mt-4 flex items-center gap-1">
+                    {[...Array(t.rating || 5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm text-red-400 font-mono font-bold tracking-wider">{t.name.toUpperCase()}</p>
                 </CardContent>
               </Card>
             ))}
