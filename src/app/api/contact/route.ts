@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Configurar transporter de email
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER, // sebaceronu@gmail.com
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // Contenido del email
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'sebaceronu@gmail.com',
+      to: 'aisolutions.cuentas@gmail.com',
       subject: `🚀 NUEVA SOLICITUD DE DEMO - ${company || 'Sin empresa'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
