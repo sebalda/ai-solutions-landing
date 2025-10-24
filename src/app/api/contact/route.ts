@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Error interno del servidor',
-        details: process.env.NODE_ENV === 'development' ? error.message : 'Error interno'
+        details: process.env.NODE_ENV === 'development' ? (error as Error).message : 'Error interno'
       },
       { status: 500 }
     );
