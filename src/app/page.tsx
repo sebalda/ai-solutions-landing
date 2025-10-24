@@ -425,7 +425,7 @@ export default function AISolutionsLanding() {
             </h2>
             <p className="mt-4 text-red-200 text-lg font-mono tracking-wider">EJEMPLOS REALES DE AUTOMATIZACIÓN APLICADA AL NEGOCIO</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
@@ -450,6 +450,34 @@ export default function AISolutionsLanding() {
                 <div className="flex items-center gap-3 text-red-400 text-sm font-bold bg-red-900/20 border border-red-500/30 rounded-lg p-3">
                   <Check className="w-5 h-5 animate-pulse" /> 
                   COTIZACIONES EN MINUTOS, NO DÍAS
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">FOODFLOW — AGENTE IA WHATSAPP</CardTitle>
+              </CardHeader>
+              <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
+                <p>AGENTE INTELIGENTE QUE TOMA PEDIDOS, CONFIRMA RESERVAS, GESTIONA PAGOS Y ENVÍA UPDATES DE ENTREGA AUTOMÁTICAMENTE.</p>
+                <div className="flex items-center gap-3 text-red-400 text-sm font-bold bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+                  <Check className="w-5 h-5 animate-pulse" /> 
+                  95% DE PEDIDOS AUTOMATIZADOS VÍA WHATSAPP
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">LOGIMAX — INVENTARIO AUTOMATIZADO</CardTitle>
+              </CardHeader>
+              <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
+                <p>SISTEMA INTELIGENTE QUE GESTIONA INVENTARIO, PREDICE DEMANDA Y OPTIMIZA RUTAS DE ENVÍO AUTOMÁTICAMENTE.</p>
+                <div className="flex items-center gap-3 text-red-400 text-sm font-bold bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+                  <Check className="w-5 h-5 animate-pulse" /> 
+                  95% REDUCCIÓN EN ERRORES DE INVENTARIO
                 </div>
               </CardContent>
             </Card>
