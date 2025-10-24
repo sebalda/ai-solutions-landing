@@ -1,13 +1,13 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, Brain, Workflow, MessageSquare, BarChart3, Rocket, Zap, Shield, Phone, Mail, ArrowRight, Star } from "lucide-react";
+import { Check, Brain, Workflow, MessageSquare, BarChart3, Rocket, Zap, Shield, Phone, Mail, ArrowRight, Star, X } from "lucide-react";
 
 // AI Solutions — Agency Landing Page
 // Ready to paste into a Next.js/React + Tailwind + shadcn/ui project
@@ -89,6 +89,15 @@ const testimonials = [
 
 export default function AISolutionsLanding() {
   const year = useMemo(() => new Date().getFullYear(), []);
+  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null);
+
+  // Función para mostrar notificaciones profesionales
+  const showNotification = (type: 'success' | 'error', message: string) => {
+    setNotification({ type, message });
+    setTimeout(() => {
+      setNotification(null);
+    }, 5000);
+  };
 
   // Función para scroll suave con efecto de pulso
   const smoothScrollTo = (elementId: string) => {
@@ -131,13 +140,14 @@ export default function AISolutionsLanding() {
       const result = await response.json();
 
       if (response.ok) {
-        alert('✅ Solicitud enviada exitosamente. Te contactaremos en 24hrs.');
+        // Mostrar notificación de éxito profesional
+        showNotification('success', 'Solicitud enviada exitosamente. Te contactaremos en 24hrs.');
         (e.target as HTMLFormElement).reset();
       } else {
-        alert('❌ Error al enviar la solicitud. Intenta nuevamente.');
+        showNotification('error', 'Error al enviar la solicitud. Intenta nuevamente.');
       }
     } catch (error) {
-      alert('❌ Error de conexión. Intenta nuevamente.');
+      showNotification('error', 'Error de conexión. Intenta nuevamente.');
     }
   };
 
@@ -676,6 +686,56 @@ export default function AISolutionsLanding() {
           </div>
         </div>
       </footer>
+
+      {/* Notificación profesional */}
+      {notification && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 50, scale: 0.9 }}
+          className="fixed bottom-6 right-6 z-50 max-w-md"
+        >
+          <div className={`rounded-xl border-2 p-6 shadow-2xl backdrop-blur-sm ${
+            notification.type === 'success' 
+              ? 'bg-gradient-to-r from-green-900/90 to-green-800/90 border-green-500/50 shadow-green-500/25' 
+              : 'bg-gradient-to-r from-red-900/90 to-red-800/90 border-red-500/50 shadow-red-500/25'
+          }`}>
+            <div className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                notification.type === 'success' 
+                  ? 'bg-green-600 text-white' 
+                  : 'bg-red-600 text-white'
+              }`}>
+                {notification.type === 'success' ? (
+                  <Check className="w-6 h-6" />
+                ) : (
+                  <X className="w-6 h-6" />
+                )}
+              </div>
+              <div className="flex-1">
+                <h3 className={`font-bold text-lg ${
+                  notification.type === 'success' ? 'text-green-200' : 'text-red-200'
+                }`}>
+                  {notification.type === 'success' ? '¡ÉXITO!' : 'ERROR'}
+                </h3>
+                <p className={`text-sm mt-1 ${
+                  notification.type === 'success' ? 'text-green-300' : 'text-red-300'
+                }`}>
+                  {notification.message}
+                </p>
+              </div>
+              <button
+                onClick={() => setNotification(null)}
+                className={`p-2 rounded-lg hover:bg-white/10 transition-colors ${
+                  notification.type === 'success' ? 'text-green-300' : 'text-red-300'
+                }`}
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

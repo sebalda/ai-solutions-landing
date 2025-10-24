@@ -68,8 +68,15 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error enviando email:', error);
+    console.error('Variables de entorno:', {
+      EMAIL_USER: process.env.EMAIL_USER ? 'Configurada' : 'No configurada',
+      EMAIL_PASS: process.env.EMAIL_PASS ? 'Configurada' : 'No configurada'
+    });
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
+      { 
+        error: 'Error interno del servidor',
+        details: process.env.NODE_ENV === 'development' ? error.message : 'Error interno'
+      },
       { status: 500 }
     );
   }
