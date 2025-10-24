@@ -34,7 +34,8 @@ const features = [
 const plans = [
   {
     name: "Starter",
-    price: "$150.000 CLP",
+    price: "$49.990 CLP",
+    originalPrice: "$150.000 CLP",
     periodic: "único",
     bullets: [
       "1 automatización básica",
@@ -45,7 +46,8 @@ const plans = [
   },
   {
     name: "Business",
-    price: "$400.000 CLP",
+    price: "$149.990 CLP",
+    originalPrice: "$400.000 CLP",
     periodic: "único",
     bullets: [
       "Hasta 3 automatizaciones",
@@ -57,7 +59,8 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "Desde $650.000 CLP",
+    price: "Desde $299.990 CLP",
+    originalPrice: "Desde $650.000 CLP",
     periodic: "+ mantención",
     bullets: [
       "Automatizaciones avanzadas",
@@ -180,7 +183,7 @@ export default function AISolutionsLanding() {
               onClick={() => smoothScrollTo('contacto')} 
               className="hidden md:inline-flex bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider cursor-pointer"
             >
-              AGENDA DEMO
+              AGENDA DEMO GRATUITA
             </Button>
           </div>
         </div>
@@ -230,7 +233,7 @@ export default function AISolutionsLanding() {
                   className="gap-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider cursor-pointer"
                 >
                   <Rocket className="w-5 h-5 animate-bounce" /> 
-                  AGENDA DEMO
+                  AGENDA DEMO GRATUITA
                 </Button>
                 <Button 
                   onClick={() => smoothScrollTo('servicios')} 
@@ -453,7 +456,13 @@ export default function AISolutionsLanding() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-400 via-red-300 to-red-500 bg-clip-text text-transparent">
               PLANES Y PRECIOS
             </h2>
+            <div className="mt-6 mb-4">
+              <Badge className="bg-red-600 text-white animate-pulse text-lg px-6 py-2 font-bold tracking-wider">
+                🔥 MEGA DESCUENTO - HASTA 67% OFF
+              </Badge>
+            </div>
             <p className="mt-4 text-red-200 text-lg font-mono tracking-wider">COMBINA PROYECTOS ÚNICOS CON MANTENCIÓN MENSUAL PARA CRECIMIENTO SOSTENIDO</p>
+            <p className="mt-2 text-red-400 text-sm font-mono tracking-wider animate-pulse">⚡ PRECIOS DE LANZAMIENTO - OFERTA LIMITADA</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {plans.map((p) => (
@@ -462,13 +471,22 @@ export default function AISolutionsLanding() {
                 <CardHeader className="relative z-10">
                   <CardTitle className="flex items-center justify-between text-red-200 font-mono">
                     <span className="text-xl font-bold tracking-wider">{p.name.toUpperCase()}</span>
-                    {p.highlight && <Badge className="bg-red-600 text-white animate-pulse">MÁS ELEGIDO</Badge>}
+                    <div className="flex gap-2">
+                      <Badge className="bg-red-600 text-white animate-pulse text-xs">
+                        {p.name === "Starter" ? "67% OFF" : p.name === "Business" ? "62% OFF" : "54% OFF"}
+                      </Badge>
+                      {p.highlight && <Badge className="bg-red-600 text-white animate-pulse">MÁS ELEGIDO</Badge>}
+                    </div>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-red-300 font-mono relative z-10 flex flex-col flex-grow">
                   <div className="mb-6">
-                    <div className="text-4xl font-bold text-red-200">{p.price}</div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="text-4xl font-bold text-red-200">{p.price}</div>
+                      <div className="text-lg text-red-400 line-through opacity-60">{p.originalPrice}</div>
+                    </div>
                     <div className="text-sm text-red-400">PAGO {p.periodic.toUpperCase()}</div>
+                    <div className="text-xs text-red-500 font-bold mt-1 animate-pulse">🔥 MEGA DESCUENTO - PRECIO DE LANZAMIENTO</div>
                   </div>
                   <ul className="space-y-3 text-sm flex-grow">
                     {p.bullets.map((b) => (
@@ -480,9 +498,10 @@ export default function AISolutionsLanding() {
                   </ul>
                   <Button 
                     onClick={() => smoothScrollTo('contacto')} 
-                    className="w-full mt-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider cursor-pointer"
+                    className="w-full mt-8 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider cursor-pointer relative overflow-hidden"
                   >
-                    QUIERO ESTE PLAN
+                    <span className="relative z-10">🚀 QUIERO ESTE PLAN</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-red-400/20 animate-pulse"></div>
                   </Button>
                 </CardContent>
               </Card>
@@ -563,9 +582,9 @@ export default function AISolutionsLanding() {
               <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardContent className="p-8 text-red-200 space-y-6 relative z-10">
-                  <p className="flex items-center gap-3 font-mono text-lg"><Phone className="w-6 h-6 text-red-400 animate-pulse" /> +56 9 0000 0000</p>
-                  <p className="flex items-center gap-3 font-mono text-lg"><Mail className="w-6 h-6 text-red-400 animate-pulse" /> contacto@aisolutions.cl</p>
-                  <div className="text-sm text-red-300 font-mono">WHATSAPP Y CORREO RESPONDEN EN HORARIO HÁBIL (GMT‑3)</div>
+                  <p className="flex items-center gap-3 font-mono text-lg"><Phone className="w-6 h-6 text-red-400 animate-pulse" /> +56 9 4858 8388</p>
+                  <p className="flex items-center gap-3 font-mono text-lg"><Mail className="w-6 h-6 text-red-400 animate-pulse" /> sebaceronu@gmail.com</p>
+                  <div className="text-sm text-red-300 font-mono">WHATSAPP Y CORREO RESPONDEN EN HORARIO HÁBIL DE 9:00HRS A 18:00HRS</div>
                 </CardContent>
               </Card>
               <Card className="bg-gradient-to-br from-red-900/30 to-red-800/20 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
