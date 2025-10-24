@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, Brain, Workflow, MessageSquare, BarChart3, Rocket, Zap, Shield, Phone, Mail, ArrowRight, Star, X } from "lucide-react";
+import { Check, Brain, Workflow, MessageSquare, BarChart3, Rocket, Zap, Shield, Phone, Mail, ArrowRight, Star, X, Bot, Cog, Settings, Wrench } from "lucide-react";
 
 // AI Solutions — Agency Landing Page
 // Ready to paste into a Next.js/React + Tailwind + shadcn/ui project
@@ -429,7 +429,12 @@ export default function AISolutionsLanding() {
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">TECHFLOW — INSIGHTS AUTOMATIZADOS</CardTitle>
+                <CardTitle className="flex items-center gap-3 text-red-200 font-mono text-lg font-bold tracking-wider">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-red-600 to-red-500 border border-red-400/50 shadow-lg shadow-red-500/25">
+                    <Settings className="w-5 h-5 text-white" />
+                  </span>
+                  TECHFLOW — INSIGHTS AUTOMATIZADOS
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
                 <p>PROCESAMOS ENCUESTAS AUTOMÁTICAMENTE, GENERAMOS INSIGHTS CON IA Y CREAMOS PRESENTACIONES LISTAS PARA PRESENTAR.</p>
@@ -443,7 +448,12 @@ export default function AISolutionsLanding() {
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">POZINOX — VENTAS Y COTIZACIONES</CardTitle>
+                <CardTitle className="flex items-center gap-3 text-red-200 font-mono text-lg font-bold tracking-wider">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-red-600 to-red-500 border border-red-400/50 shadow-lg shadow-red-500/25">
+                    <Bot className="w-5 h-5 text-white" />
+                  </span>
+                  POZINOX — VENTAS Y COTIZACIONES
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
                 <p>AGENTE DE VENTAS INTELIGENTE QUE RESPONDE A CLIENTES, GENERA COTIZACIONES AUTOMÁTICAMENTE Y LAS ENVÍA INSTANTÁNEAMENTE.</p>
@@ -457,7 +467,12 @@ export default function AISolutionsLanding() {
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">FOODFLOW — AGENTE IA WHATSAPP</CardTitle>
+                <CardTitle className="flex items-center gap-3 text-red-200 font-mono text-lg font-bold tracking-wider">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-red-600 to-red-500 border border-red-400/50 shadow-lg shadow-red-500/25">
+                    <Bot className="w-5 h-5 text-white" />
+                  </span>
+                  FOODFLOW — AGENTE IA WHATSAPP
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
                 <p>AGENTE INTELIGENTE QUE TOMA PEDIDOS, CONFIRMA RESERVAS, GESTIONA PAGOS Y ENVÍA UPDATES DE ENTREGA AUTOMÁTICAMENTE.</p>
@@ -471,7 +486,12 @@ export default function AISolutionsLanding() {
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardHeader className="relative z-10">
-                <CardTitle className="text-red-200 font-mono text-lg font-bold tracking-wider">LOGIMAX — INVENTARIO AUTOMATIZADO</CardTitle>
+                <CardTitle className="flex items-center gap-3 text-red-200 font-mono text-lg font-bold tracking-wider">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-r from-red-600 to-red-500 border border-red-400/50 shadow-lg shadow-red-500/25">
+                    <Cog className="w-5 h-5 text-white" />
+                  </span>
+                  LOGIMAX — INVENTARIO AUTOMATIZADO
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-red-300 font-mono text-sm leading-relaxed space-y-3 relative z-10">
                 <p>SISTEMA INTELIGENTE QUE GESTIONA INVENTARIO, PREDICE DEMANDA Y OPTIMIZA RUTAS DE ENVÍO AUTOMÁTICAMENTE.</p>
