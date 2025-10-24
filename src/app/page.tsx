@@ -107,6 +107,40 @@ export default function AISolutionsLanding() {
     }
   };
 
+  // Función para manejar el envío del formulario
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('✅ Solicitud enviada exitosamente. Te contactaremos en 24hrs.');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert('❌ Error al enviar la solicitud. Intenta nuevamente.');
+      }
+    } catch (error) {
+      alert('❌ Error de conexión. Intenta nuevamente.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-red-900 text-red-100 relative overflow-hidden">
       {/* Futuristic Background Effects */}
@@ -558,13 +592,34 @@ export default function AISolutionsLanding() {
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <CardContent className="p-8 space-y-6 relative z-10">
+              <form onSubmit={handleSubmit} className="p-8 space-y-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <Input placeholder="NOMBRE" className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" />
-                  <Input type="email" placeholder="CORREO" className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" />
+                  <Input 
+                    name="name"
+                    placeholder="NOMBRE" 
+                    required
+                    className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" 
+                  />
+                  <Input 
+                    name="email"
+                    type="email" 
+                    placeholder="CORREO" 
+                    required
+                    className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" 
+                  />
                 </div>
-                <Input placeholder="EMPRESA (OPCIONAL)" className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" />
-                <Textarea placeholder="¿QUÉ PROCESO QUIERES AUTOMATIZAR?" rows={5} className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" />
+                <Input 
+                  name="company"
+                  placeholder="EMPRESA (OPCIONAL)" 
+                  className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" 
+                />
+                <Textarea 
+                  name="message"
+                  placeholder="¿QUÉ PROCESO QUIERES AUTOMATIZAR?" 
+                  rows={5} 
+                  required
+                  className="bg-red-900/20 border-red-500/50 text-red-200 placeholder-red-400 focus:border-red-400" 
+                />
                 <div className="flex flex-wrap gap-3">
                   <Badge className="bg-red-900/30 border-red-500/50 text-red-300 font-mono text-xs tracking-wider">AUTOMATIZACIÓN</Badge>
                   <Badge className="bg-red-900/30 border-red-500/50 text-red-300 font-mono text-xs tracking-wider">ATENCIÓN 24/7</Badge>
@@ -572,11 +627,14 @@ export default function AISolutionsLanding() {
                   <Badge className="bg-red-900/30 border-red-500/50 text-red-300 font-mono text-xs tracking-wider">INTEGRACIÓN</Badge>
                   <Badge className="bg-red-900/30 border-red-500/50 text-red-300 font-mono text-xs tracking-wider">IA</Badge>
                 </div>
-                <Button className="w-full gap-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider">
+                <Button 
+                  type="submit"
+                  className="w-full gap-3 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white border-red-500/50 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 font-bold tracking-wider"
+                >
                   ENVIAR SOLICITUD <ArrowRight className="w-5 h-5" />
                 </Button>
                 <p className="text-xs text-red-400 font-mono">AL ENVIAR ACEPTAS NUESTRA POLÍTICA DE PRIVACIDAD</p>
-              </CardContent>
+              </form>
             </Card>
             <div className="space-y-8">
               <Card className="bg-black/50 border-red-500/30 hover:border-red-400/50 transition-all duration-300 hover:scale-105 relative group overflow-hidden">
