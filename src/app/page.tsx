@@ -336,21 +336,21 @@ export default function AISolutionsLanding() {
               initial={{ opacity: 0, y: 24 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex items-center justify-center mt-8 lg:mt-0"
+              className="flex items-center justify-center mt-8 lg:mt-0 pb-8 sm:pb-12"
             >
               {/* Mockup de Teléfono */}
               <div className="relative">
                 {/* Teléfono Frame */}
-                <div className="relative w-[240px] sm:w-[280px] md:w-[320px] lg:w-[320px] mx-auto">
+                <div className="relative w-[240px] sm:w-[280px] md:w-[320px] mx-auto">
                   {/* Borde del teléfono con notch */}
-                  <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl border-4 border-gray-800">
+                  <div className="relative bg-black rounded-[2.5rem] sm:rounded-[3rem] p-2.5 sm:p-3 shadow-2xl border-3 sm:border-4 border-gray-800">
                     {/* Notch */}
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 sm:w-32 h-5 sm:h-6 bg-black rounded-b-xl sm:rounded-b-2xl z-20"></div>
                     
                     {/* Pantalla del teléfono */}
-                    <div className="relative bg-[#0b141a] rounded-[2.5rem] overflow-hidden border-2 border-gray-700">
+                    <div className="relative bg-[#0b141a] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden border-2 border-gray-700 flex flex-col" style={{ minHeight: '520px' }}>
                       {/* Barra de estado */}
-                      <div className="flex justify-between items-center px-6 pt-12 pb-2 text-white text-xs">
+                      <div className="flex justify-between items-center px-4 sm:px-6 pt-10 sm:pt-12 pb-2 text-white text-xs flex-shrink-0">
                         <span>9:41</span>
                         <div className="flex gap-1">
                           <div className="w-1 h-1 bg-white rounded-full"></div>
@@ -363,7 +363,7 @@ export default function AISolutionsLanding() {
                       </div>
                       
                       {/* Header de WhatsApp */}
-                      <div className="bg-[#075e54] px-4 py-3 flex items-center gap-3 text-white">
+                      <div className="bg-[#075e54] px-4 py-3 flex items-center gap-3 text-white flex-shrink-0">
                         <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center">
                           <MessageCircle className="w-5 h-5" />
                         </div>
@@ -376,52 +376,54 @@ export default function AISolutionsLanding() {
                         </div>
                       </div>
                       
-                      {/* Conversación de WhatsApp */}
-                      <div className="bg-[#e5ddd5] bg-opacity-60 p-3 sm:p-4 space-y-2 sm:space-y-3 min-h-[300px] sm:min-h-[400px]">
-                        {/* Mensaje del cliente */}
-                        <div className="flex justify-end">
-                          <div className="max-w-[75%] bg-[#dcf8c6] rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shadow-sm">
-                            <p className="text-xs sm:text-sm text-gray-800">Hola, necesito ayuda con mi pedido</p>
-                            <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 text-right">9:42 AM</p>
+                      {/* Conversación de WhatsApp - contenido completo visible */}
+                      <div className="bg-[#e5ddd5] bg-opacity-60 p-3 sm:p-4 flex-1 flex flex-col justify-end min-h-0">
+                        <div className="space-y-2 sm:space-y-3">
+                          {/* Mensaje del cliente */}
+                          <div className="flex justify-end">
+                            <div className="max-w-[75%] bg-[#dcf8c6] rounded-lg px-3 py-2 shadow-sm">
+                              <p className="text-sm text-gray-800">Hola, necesito ayuda con mi pedido</p>
+                              <p className="text-xs text-gray-500 mt-1 text-right">9:42 AM</p>
+                            </div>
                           </div>
-                        </div>
-                        
-                        {/* Respuesta del Agente IA */}
-                        <div className="flex justify-start">
-                          <div className="max-w-[75%] bg-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shadow-sm">
-                            <p className="text-xs sm:text-sm text-gray-800">¡Hola! 👋 Soy tu Agente IA de soporte. Con gusto te ayudo con tu pedido. ¿Puedes proporcionarme el número de tu pedido?</p>
-                            <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">9:42 AM</p>
+                          
+                          {/* Respuesta del Agente IA */}
+                          <div className="flex justify-start">
+                            <div className="max-w-[75%] bg-white rounded-lg px-3 py-2 shadow-sm">
+                              <p className="text-sm text-gray-800">¡Hola! 👋 Soy tu Agente IA de soporte. Con gusto te ayudo con tu pedido. ¿Puedes proporcionarme el número de tu pedido?</p>
+                              <p className="text-xs text-gray-500 mt-1">9:42 AM</p>
+                            </div>
                           </div>
-                        </div>
-                        
-                        {/* Mensaje del cliente */}
-                        <div className="flex justify-end">
-                          <div className="max-w-[75%] bg-[#dcf8c6] rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shadow-sm">
-                            <p className="text-xs sm:text-sm text-gray-800">Es el #12345</p>
-                            <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 text-right">9:43 AM</p>
+                          
+                          {/* Mensaje del cliente */}
+                          <div className="flex justify-end">
+                            <div className="max-w-[75%] bg-[#dcf8c6] rounded-lg px-3 py-2 shadow-sm">
+                              <p className="text-sm text-gray-800">Es el #12345</p>
+                              <p className="text-xs text-gray-500 mt-1 text-right">9:43 AM</p>
+                            </div>
                           </div>
-                        </div>
-                        
-                        {/* Respuesta del Agente IA con información */}
-                        <div className="flex justify-start">
-                          <div className="max-w-[75%] bg-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shadow-sm">
-                            <p className="text-xs sm:text-sm text-gray-800">Perfecto, encontré tu pedido. Está en proceso de envío y llegará mañana entre 10-14hrs. 📦</p>
-                            <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">9:43 AM</p>
+                          
+                          {/* Respuesta del Agente IA con información */}
+                          <div className="flex justify-start">
+                            <div className="max-w-[75%] bg-white rounded-lg px-3 py-2 shadow-sm">
+                              <p className="text-sm text-gray-800">Perfecto, encontré tu pedido. Está en proceso de envío y llegará mañana entre 10-14hrs. 📦</p>
+                              <p className="text-xs text-gray-500 mt-1">9:43 AM</p>
+                            </div>
                           </div>
-                        </div>
-                        
-                        {/* Indicador de escritura */}
-                        <div className="flex justify-start">
-                          <div className="bg-white rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 flex gap-1">
-                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full"></div>
-                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full"></div>
-                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full"></div>
+                          
+                          {/* Indicador de escritura */}
+                          <div className="flex justify-start">
+                            <div className="bg-white rounded-lg px-3 py-2 flex gap-1">
+                              <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                              <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                              <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       
                       {/* Input de WhatsApp */}
-                      <div className="bg-[#f0f2f5] px-4 py-2 flex items-center gap-2">
+                      <div className="bg-[#f0f2f5] px-4 py-2 flex items-center gap-2 flex-shrink-0">
                         <div className="flex-1 bg-white rounded-full px-4 py-2 flex items-center gap-2">
                           <span className="text-gray-400 text-sm">Escribe un mensaje</span>
                         </div>
@@ -433,13 +435,13 @@ export default function AISolutionsLanding() {
                   </div>
                   
                   {/* Subtle Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-transparent to-emerald-500/10 rounded-[3rem] pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 via-transparent to-emerald-500/10 rounded-[2.5rem] sm:rounded-[3rem] pointer-events-none"></div>
                 </div>
                 
-                {/* Badge flotante */}
-                <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold shadow-md flex items-center gap-1.5 sm:gap-2">
-                  <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span className="whitespace-nowrap">AGENTE IA ACTIVO 24/7</span>
+                {/* Badge flotante - posicionado fuera del teléfono para que no se corte */}
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-md flex items-center gap-2 whitespace-nowrap z-10">
+                  <MessageCircle className="w-4 h-4" />
+                  AGENTE IA ACTIVO 24/7
                 </div>
               </div>
             </motion.div>
