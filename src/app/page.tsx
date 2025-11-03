@@ -35,38 +35,49 @@ const plans = [
   {
     name: "Starter",
     price: "$49.990 CLP",
-    originalPrice: "$150.000 CLP",
-    periodic: "único",
+    originalPrice: null,
+    periodic: "mensual",
     bullets: [
-      "1 automatización básica",
-      "Ahorro de 5-10 horas/semana",
-      "Entrega y soporte 15 días",
+      "1 Agente IA WhatsApp",
+      "Respuestas automáticas 24/7",
+      "Hasta 1.000 conversaciones/mes",
+      "Configuración personalizada",
+      "Soporte técnico incluido",
+      "Panel de control básico",
     ],
     highlight: false,
   },
   {
     name: "Business",
     price: "$149.990 CLP",
-    originalPrice: "$400.000 CLP",
-    periodic: "único",
+    originalPrice: null,
+    periodic: "mensual",
     bullets: [
-      "Hasta 3 automatizaciones",
-      "Atención al cliente 24/7",
-      "Integración con tus sistemas",
-      "Soporte 30 días",
+      "2 Agentes IA WhatsApp",
+      "1 Automatización personalizada",
+      "Hasta 5.000 conversaciones/mes",
+      "Integración con sistemas",
+      "Soporte prioritario 24/7",
+      "Panel de control avanzado",
+      "Reportes y analytics",
     ],
     highlight: true,
   },
   {
     name: "Pro",
-    price: "Desde $299.990 CLP",
-    originalPrice: "Desde $650.000 CLP",
-    periodic: "+ mantención",
+    price: "Desde $199.990 CLP",
+    originalPrice: null,
+    periodic: "mensual",
     bullets: [
-      "Automatizaciones avanzadas",
-      "Reportes automáticos",
-      "Soporte continuo",
-      "Mantenimiento mensual",
+      "3 Agentes IA WhatsApp",
+      "Hasta 5 automatizaciones avanzadas",
+      "Hasta 15.000 conversaciones/mes",
+      "Integración con CRM y APIs",
+      "Soporte dedicado 24/7",
+      "Panel de control completo",
+      "Reportes avanzados y métricas",
+      "Entrenamiento personalizado",
+      "Actualizaciones continuas",
     ],
     highlight: false,
   },
@@ -663,13 +674,7 @@ export default function AISolutionsLanding() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider bg-gradient-to-r from-green-400 via-cyan-300 to-emerald-500 bg-clip-text text-transparent">
               PLANES Y PRECIOS
             </h2>
-            <div className="mt-4 sm:mt-6 mb-3 sm:mb-4">
-              <Badge className="bg-green-600 text-white text-sm sm:text-lg px-4 sm:px-6 py-1.5 sm:py-2 font-semibold tracking-wider">
-                🔥 MEGA DESCUENTO - HASTA 67% OFF
-              </Badge>
-            </div>
-            <p className="mt-3 sm:mt-4 text-green-200 text-base sm:text-lg font-mono tracking-wider px-2">COMBINA PROYECTOS ÚNICOS CON MANTENCIÓN MENSUAL PARA CRECIMIENTO SOSTENIDO</p>
-            <p className="mt-2 text-green-400 text-xs sm:text-sm font-medium tracking-wider">⚡ PRECIOS DE LANZAMIENTO - OFERTA LIMITADA</p>
+            <p className="mt-3 sm:mt-4 text-green-200 text-base sm:text-lg font-mono tracking-wider px-2">ELIGE EL PLAN PERFECTO PARA TU NEGOCIO - WHATSAPP 24/7</p>
           </div>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {plans.map((p) => (
@@ -677,29 +682,25 @@ export default function AISolutionsLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardHeader className="relative z-10">
                   <CardTitle className="flex items-center justify-between text-green-200 font-mono">
-                    <span className="text-xl font-bold tracking-wider">{p.name.toUpperCase()}</span>
-                    <div className="flex gap-2">
-                      <Badge className="bg-green-600 text-white text-xs">
-                        {p.name === "Starter" ? "67% OFF" : p.name === "Business" ? "62% OFF" : "54% OFF"}
-                      </Badge>
-                      {p.highlight && <Badge className="bg-green-600 text-white">MÁS ELEGIDO</Badge>}
-                    </div>
+                    <span className="text-xl font-bold tracking-wider">PLAN {p.name.toUpperCase()}</span>
+                    {p.highlight && <Badge className="bg-green-600 text-white">MÁS ELEGIDO</Badge>}
                   </CardTitle>
+                  <div className="mt-3 text-green-300 font-semibold text-sm sm:text-base">
+                    {p.name === "Starter" && "1 AGENTE IA"}
+                    {p.name === "Business" && "2 AGENTES IA + 1 AUTOMATIZACIÓN"}
+                    {p.name === "Pro" && "3 AGENTES IA + AUTOMATIZACIONES AVANZADAS"}
+                  </div>
                 </CardHeader>
                 <CardContent className="text-green-300 font-mono relative z-10 flex flex-col flex-grow">
                   <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="text-4xl font-bold text-green-200">{p.price}</div>
-                      <div className="text-lg text-green-400 line-through opacity-60">{p.originalPrice}</div>
-                    </div>
-                    <div className="text-sm text-green-400">PAGO {p.periodic.toUpperCase()}</div>
-                    <div className="text-xs text-green-500 font-semibold mt-1">🔥 MEGA DESCUENTO - PRECIO DE LANZAMIENTO</div>
+                    <div className="text-4xl font-bold text-green-200 mb-2">{p.price}</div>
+                    <div className="text-sm text-green-400">precio {p.periodic}</div>
                   </div>
                   <ul className="space-y-3 text-sm flex-grow">
                     {p.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 mt-0.5 text-green-400" /> 
-                        <span className="text-green-300">{b.toUpperCase()}</span>
+                        <Check className="w-5 h-5 mt-0.5 text-green-400 flex-shrink-0" /> 
+                        <span className="text-green-300">{b}</span>
                       </li>
                     ))}
                   </ul>
